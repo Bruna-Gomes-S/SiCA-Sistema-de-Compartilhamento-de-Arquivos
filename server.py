@@ -11,7 +11,7 @@ STORAGE_DIR = 'server_storage'
 if not os.path.exists(STORAGE_DIR):
     os.makedirs(STORAGE_DIR)
 
-# 2. INICIANDO O SERVIDOR
+# INICIANDO O SERVIDOR
 # Cria o "telefone" (socket) usando o protocolo TCP
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server_socket.bind((HOST, PORT)) 
@@ -41,7 +41,7 @@ while True:
                 resposta = "\n".join(arquivos) if arquivos else "Pasta vazia."
                 client_socket.send(resposta.encode('utf-8')) # Envia a lista pro cliente
 
-            # CASO 2: O cliente quer enviar um arquivo para o servidor (UPLOAD)
+            #  O cliente quer enviar um arquivo para o servidor (UPLOAD)
             elif command == "UPLOAD":
                 nome_arquivo = os.path.basename(param)
                 caminho_completo = os.path.join(STORAGE_DIR, nome_arquivo)
@@ -62,7 +62,7 @@ while True:
 
                 client_socket.send("SUCCESS".encode('utf-8')) # Confirma que deu certo
 
-            # CASO 3: O cliente quer baixar um arquivo do servidor (DOWNLOAD)
+            # O cliente quer baixar um arquivo do servidor (DOWNLOAD)
             elif command == "DOWNLOAD":
                 nome_arquivo = os.path.basename(param)
                 caminho_completo = os.path.join(STORAGE_DIR, nome_arquivo)
@@ -84,7 +84,7 @@ while True:
                 else:
                     client_socket.send("NOT_FOUND".encode('utf-8')) # Avisa que não existe
 
-            # CASO 4: O cliente quer fechar o programa (EXIT)
+            # O cliente quer fechar o programa (EXIT)
             elif command == "EXIT":
                 break
 
