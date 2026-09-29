@@ -36,7 +36,7 @@
 
 ---
 
-## 🚀 Como Executar o Projeto
+## 🚀🚀 Como Executar o Projeto
 
 1. **Compilar os ficheiros Java:**
    ```bash
